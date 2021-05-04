@@ -1,4 +1,4 @@
-module github.com/Logiase/MiraiGo-Template
+module fake-atom
 
 go 1.15
 

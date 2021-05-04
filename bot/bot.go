@@ -12,8 +12,8 @@ import (
 
 	asc2art "github.com/yinghau76/go-ascii-art"
 
-	"github.com/Logiase/MiraiGo-Template/config"
-	"github.com/Logiase/MiraiGo-Template/utils"
+	"fake-atom/config"
+	"fake-atom/utils"
 	"github.com/Mrs4s/MiraiGo/client"
 	"github.com/sirupsen/logrus"
 )
@@ -66,6 +66,7 @@ func GenRandomDevice() {
 	b, _ := utils.FileExist("./device.json")
 	if b {
 		logger.Warn("device.json exists, will not write device to file")
+		return
 	}
 	err := ioutil.WriteFile("device.json", client.SystemDeviceInfo.ToJson(), os.FileMode(0755))
 	if err != nil {

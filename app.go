@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/Logiase/MiraiGo-Template/bot"
-	"github.com/Logiase/MiraiGo-Template/config"
-	_ "github.com/Logiase/MiraiGo-Template/modules/logging"
-	"github.com/Logiase/MiraiGo-Template/utils"
+	"fake-atom/bot"
+	"fake-atom/config"
+	_ "fake-atom/modules/autoReply"
+	_ "fake-atom/modules/logging"
+	"fake-atom/utils"
 	"os"
 	"os/signal"
 )
@@ -16,6 +17,9 @@ func init() {
 }
 
 func main() {
+	// 生成device.json
+	bot.GenRandomDevice()
+	
 	// 快速初始化
 	bot.Init()
 
