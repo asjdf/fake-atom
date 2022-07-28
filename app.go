@@ -1,25 +1,24 @@
 package main
 
 import (
-	"fake-atom/bot"
-	"fake-atom/config"
-	_ "fake-atom/modules/autoReply"
-	_ "fake-atom/modules/logging"
-	"fake-atom/utils"
 	"os"
 	"os/signal"
+
+	"fake-atom/bot"
+	"fake-atom/config"
+	"fake-atom/utils"
+
+	_ "fake-atom/modules/goodNight"
+	_ "fake-atom/modules/joinGroupVerify"
+	_ "fake-atom/modules/logging"
 )
 
 func init() {
 	utils.WriteLogToFS()
 	config.Init()
-	//bot.GenRandomDevice()
 }
 
 func main() {
-	// 生成device.json
-	bot.GenRandomDevice()
-	
 	// 快速初始化
 	bot.Init()
 
@@ -29,10 +28,11 @@ func main() {
 	// 使用协议
 	// 不同协议可能会有部分功能无法使用
 	// 在登陆前切换协议
-	bot.UseProtocol(bot.AndroidPhone)
+	bot.UseProtocol(bot.AndroidWatch)
 
 	// 登录
 	bot.Login()
+	bot.SaveToken()
 
 	// 刷新好友列表，群列表
 	bot.RefreshList()
